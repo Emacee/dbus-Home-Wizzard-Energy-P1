@@ -1,6 +1,6 @@
 # W.I.P. -> Converting from dbus-shelly-3em-smartmeter
-# dbus-home-wizzard-energy-p1
-Integrate Home Wizzard Energy P1 meter into [Victron Energies Venus OS](https://github.com/victronenergy/venus)
+# dbus-home-wizard-energy-p1
+Integrate Home Wizard Energy P1 meter into [Victron Energies Venus OS](https://github.com/victronenergy/venus)
 
 ## Purpose
 With the scripts in this repo it should be easy possible to install, uninstall, restart a service that connects the Shelly 3EM to the VenusOS and GX devices from Victron.
@@ -18,11 +18,11 @@ This project is my first on GitHub and with the Victron Venus OS, so I took some
 
 ## How it works
 ### My setup
-- Home Wizzard Energy P1 with latest firmware 
+- Home Wizard Energy P1 with latest firmware 
   - 1 or 3-Phase installation (normal for Netherlands)
   - Connected to Wifi network "A"
   - IP 192.168.2.13/24  
-- Victron Energy Cerbo GX with Venus OS - Firmware v3.11
+- Raspberry Pi 3B with Venus OS - Firmware v3.63
   - No other devices from Victron connected (still waiting for shipment of Multiplus-2)
   - Connected to Wifi network "A"
   - IP 192.168.2.20/24
@@ -32,8 +32,8 @@ As mentioned above the script is inspired by @RalfZim fronius smartmeter impleme
 So what is the script doing:
 - Running as a service
 - connecting to DBus of the Venus OS `com.victronenergy.grid.http_40` or `com.victronenergy.pvinverter.http_40`
-- After successful DBus connection Home Wizzard P1 is accessed via REST-API - simply the /status is called and a JSON is returned with all details
-  A sample JSON file from Home Wizzard Energy P1 can be found [here](docs/home-wizzard-energy-p1.json)
+- After successful DBus connection Home Wizard P1 is accessed via REST-API - simply the /status is called and a JSON is returned with all details
+  A sample JSON file from Home Wizard Energy P1 can be found [here](docs/home-wizzard-energy-p1.json)
 - Serial is taken from the response as device serial
 - Paths are added to the DBus with default value 0 - including some settings like name, etc
 - After that a "loop" is started which pulls Home Wizzard P1 data every 750ms from the REST-API and updates the values in the DBus
